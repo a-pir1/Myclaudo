@@ -16,7 +16,7 @@
 <div class="col-auto">
   <label>{{dict_translation['sht_voltage']['title']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="sht_voltage" name="sht_voltage" title="{{dict_translation['sht_voltage']['phrase']}}">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="sht_voltage" name="sht_voltage" title="{{dict_translation['sht_voltage']['phrase']}}">
     {% for each_value, each_name in dict_options['sht_voltage'] %}
       <option value="{{each_value}}"{% if each_device.sht_voltage == each_value %} selected{% endif %}>{{each_name}}</option>
     {% endfor %}

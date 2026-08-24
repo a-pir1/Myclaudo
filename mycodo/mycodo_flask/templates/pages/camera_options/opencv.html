@@ -1,7 +1,7 @@
 <div class="form-group">
   {{form_camera.opencv_device.label(class_='control-label')}}
   <div>
-    <select class="form-control" id="opencv_device" name="opencv_device" title="" data-original-title="Select the opencv device (if using opencv).">
+    <select class="form-control" id="opencv_device" name="opencv_device" title="" data-bs-original-title="Select the opencv device (if using opencv).">
       {% if not opencv_devices %}
         <option value="">No Devices Detected</option>
       {% endif %}

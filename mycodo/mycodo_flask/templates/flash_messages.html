@@ -1,7 +1,7 @@
 {%- with errors = get_flashed_messages(category_filter=["success"]) -%}
   {%- if errors and not hide_alert_success %}
-    <div class="alert alert-success">
-      <span style="cursor:pointer" class="close" data-dismiss="alert" aria-label="close">&times;</span>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{_('Close')}}"></button>
       <ul>
         {%- for msg in errors %}
           <li style="white-space: pre-wrap;">{{_('Success')}}: {{msg}}</li>
@@ -13,8 +13,8 @@
 
 {%- with errors = get_flashed_messages(category_filter=["info"]) -%}
   {%- if errors and not hide_alert_info %}
-    <div class="alert alert-info">
-      <span style="cursor:pointer" class="close" data-dismiss="alert" aria-label="close">&times;</span>
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{_('Close')}}"></button>
       <ul>
         {%- for msg in errors %}
           <li style="white-space: pre-wrap;">{{_('Info')}}: {{msg}}</li>
@@ -26,8 +26,8 @@
 
 {%- with errors = get_flashed_messages(category_filter=["warning"]) -%}
   {%- if errors and not hide_alert_warning %}
-    <div class="alert alert-warning">
-      <span style="cursor:pointer" class="close" data-dismiss="alert" aria-label="close">&times;</span>
+    <div class="alert alert-warning alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{_('Close')}}"></button>
       <ul>
         {%- for msg in errors %}
           <li style="white-space: pre-wrap;">{{_('Warning')}}: {{msg}}</li>
@@ -39,8 +39,8 @@
 
 {%- with errors = get_flashed_messages(category_filter=["error"]) -%}
   {%- if errors and not hide_alert_warning %}
-    <div class="alert alert-danger">
-      <span style="cursor:pointer" class="close" data-dismiss="alert" aria-label="close">&times;</span>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{_('Close')}}"></button>
       <ul>
         {%- for msg in errors %}
           <li style="white-space: pre-wrap;">{{_('Error')}}: {{msg}}</li>

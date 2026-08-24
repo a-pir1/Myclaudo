@@ -96,7 +96,7 @@
     <div class="col-auto">
       <label class="control-label" for="measurement_rescale_method_{{each_measurement.unique_id}}">{{_('Rescale Method')}}</label>
       <div>
-        <select class="form-control form-tooltip form-dropdown" id="measurement_rescale_method_{{each_measurement.unique_id}}" name="measurement_rescale_method_{{each_measurement.unique_id}}" data-placement="top" title="The method to employ to rescale">
+        <select class="form-control form-tooltip form-dropdown" id="measurement_rescale_method_{{each_measurement.unique_id}}" name="measurement_rescale_method_{{each_measurement.unique_id}}" data-bs-placement="top" title="The method to employ to rescale">
           <option value="linear"{% if each_measurement.rescale_method == "linear" %} selected{% endif %}>{{_('Linear')}}</option>
           <option value="equation"{% if each_measurement.rescale_method == "equation" %} selected{% endif %}>{{_('Equation')}}</option>
         </select>
@@ -159,7 +159,7 @@
   <div class="col-auto">
     <label class="control-label" for="measurement_conversion_id_{{each_measurement.unique_id}}">{{dict_translation['convert_to_measurement_unit']['title']}}</label>
     <div>
-      <select class="form-control form-tooltip form-dropdown" id="measurement_conversion_id_{{each_measurement.unique_id}}" name="measurement_conversion_id_{{each_measurement.unique_id}}" data-placement="top" title="{{dict_translation['convert_to_measurement_unit']['phrase']}}">
+      <select class="form-control form-tooltip form-dropdown" id="measurement_conversion_id_{{each_measurement.unique_id}}" name="measurement_conversion_id_{{each_measurement.unique_id}}" data-bs-placement="top" title="{{dict_translation['convert_to_measurement_unit']['phrase']}}">
         <option value="">{{_('Do Not Convert')}}</option>
       {%- set all_conversion = table_conversion.query.all() -%}
       {%- if all_conversion -%}

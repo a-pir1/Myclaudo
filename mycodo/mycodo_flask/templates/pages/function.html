@@ -345,7 +345,7 @@
                 if (data.data.dep_message.length > 0) {
                   document.getElementById("dependencies_message").innerHTML = "<p>Message about dependencies: " + data.data.dep_message + "</p>";
                 }
-                $('#modal_config_dependency_install').modal('show');
+                bsModalShow('#modal_config_dependency_install');
                 popup_response(data);
               } else {
                 $.ajax({
@@ -358,7 +358,7 @@
                         h: 1,
                         y: 999
                       });
-                      {% if not hide_tooltips %}$('input[title]').tooltip({placement: 'top'});{% endif %}
+                      {% if not hide_tooltips %}bsTooltip('input[title]', {placement: 'top'});{% endif %}
                       $('#action_type_' + data.data.function_id).selectpicker('refresh');
                       $('#condition_type_' + data.data.function_id).selectpicker('refresh');
                     }
@@ -379,7 +379,7 @@
               if (data.data.dep_message.length > 0) {
                 document.getElementById("dependencies_message").innerHTML = "<p>Message about dependencies: " + data.data.dep_message + "</p>";
               }
-              $('#modal_config_dependency_install').modal('show');
+              bsModalShow('#modal_config_dependency_install');
             }
 
             if (data.data.messages.error.length === 0) {
@@ -397,7 +397,7 @@
                 }
               }
               else if (action === 'function_delete' && 'function_id' in data.data) {
-                $('#modal_config_' + data.data.function_id).modal('hide');
+                bsModalHide('#modal_config_' + data.data.function_id);
                 $('.modal-backdrop').remove();
                 $(document.body).removeClass("modal-open");
                 grid.removeWidget('#gridstack_function_' + data.data.function_id);

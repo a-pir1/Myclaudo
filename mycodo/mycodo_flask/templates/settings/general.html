@@ -43,7 +43,7 @@
       <div class="form-group">
         {{form_settings_general.language.label(class_='col-sm-12 control-label')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" data-placement="top" id="language" name="language" title="{{_("Selecting a language will override the web browser's language")}}">
+          <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="language" name="language" title="{{_("Selecting a language will override the web browser's language")}}">
             <option value="">Browser Default</option>
             {% for each_language in languages %}
               <option value="{{each_language[0]}}"{% if current_user.language == each_language[0] %} selected{% endif %}>{{each_language[1]}}</option>
@@ -54,7 +54,7 @@
       <div class="form-group">
         {{form_settings_general.landing_page.label(class_='col-sm-12 control-label')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" data-placement="top" id="landing_page" name="landing_page" title="{{_('Which page to land on after logging in')}}">
+          <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="landing_page" name="landing_page" title="{{_('Which page to land on after logging in')}}">
             <option value="dashboard"{% if current_user.landing_page == 'dashboard' %} selected{% endif %}>{{_('Dashboard')}}</option>
             <option value="live"{% if current_user.landing_page == 'live' %} selected{% endif %}>{{_('Live Measurements')}}</option>
             <option value="info"{% if current_user.landing_page == 'system_information' %} selected{% endif %}>{{_('System Information')}}</option>
@@ -64,7 +64,7 @@
       <div class="form-group">
         {{form_settings_general.index_page.label(class_='col-sm-12 control-label')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" data-placement="top" id="index_page" name="index_page" title="{{_('Which page to land on after clicking brand link (top-corner link)')}}">
+          <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="index_page" name="index_page" title="{{_('Which page to land on after clicking brand link (top-corner link)')}}">
             <option value="landing"{% if current_user.index_page == 'landing' %} selected{% endif %}>{{_('Same as Landing Page')}}</option>
             <option value="dashboard"{% if current_user.index_page == 'dashboard' %} selected{% endif %}>{{_('Dashboard')}}</option>
             <option value="live"{% if current_user.index_page == 'live' %} selected{% endif %}>{{_('Live Measurements')}}</option>
@@ -75,7 +75,7 @@
       <div class="form-group">
         {{form_settings_general.brand_display.label(class_='col-sm-12 control-label')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" data-placement="top" id="brand_display" name="brand_display" title="{{_('What to display in the top-left corner of the UI')}}">
+          <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="brand_display" name="brand_display" title="{{_('What to display in the top-left corner of the UI')}}">
             <option value="hostname"{% if settings.brand_display == 'hostname' %} selected{% endif %}>{{_('Hostname')}}</option>
             <option value="brand_text"{% if settings.brand_display == 'brand_text' %} selected{% endif %}>{{_('Brand Text')}}</option>
             <option value="brand_image"{% if settings.brand_display == 'brand_image' %} selected{% endif %}>{{_('Brand Image')}}</option>
@@ -85,7 +85,7 @@
       <div class="form-group">
         {{form_settings_general.title_display.label(class_='col-sm-12 control-label')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" data-placement="top" id="title_display" name="title_display" title="{{_('What to display as the page title of the UI')}}">
+          <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="title_display" name="title_display" title="{{_('What to display as the page title of the UI')}}">
             <option value="hostname"{% if settings.title_display == 'hostname' %} selected{% endif %}>{{_('Hostname')}}</option>
             <option value="brand_text"{% if settings.title_display == 'brand_text' %} selected{% endif %}>{{_('Brand Text')}}</option>
           </select>
@@ -112,7 +112,7 @@
       <div class="form-group">
         {{form_settings_general.favicon_display.label(class_='col-sm-12 control-label')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" data-placement="top" id="favicon_display" name="favicon_display" title="{{_('What to display as the favicon')}}">
+          <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="favicon_display" name="favicon_display" title="{{_('What to display as the favicon')}}">
             <option value="default"{% if settings.favicon_display == 'default' %} selected{% endif %}>{{_('Default')}}</option>
             <option value="brand_favicon"{% if settings.favicon_display == 'brand_favicon' %} selected{% endif %}>{{_('Brand Icon')}}</option>
           </select>
@@ -366,7 +366,7 @@
       <div class="form-group">
         {{form_settings_general.output_usage_report_span.label(class_='col-sm-12 control-label checkbox-nopad')}}
         <div class="col-sm-12">
-          <select class="form-control form-tooltip form-dropdown" id="output_usage_report_span" name="output_usage_report_span" title="" data-original-title="{{_('How often to generate a report')}}">
+          <select class="form-control form-tooltip form-dropdown" id="output_usage_report_span" name="output_usage_report_span" title="" data-bs-original-title="{{_('How often to generate a report')}}">
             <option value="monthly"{% if settings.output_usage_report_span == 'monthly' %} selected{% endif %}>Monthly</option>
             <option value="weekly"{% if settings.output_usage_report_span == 'weekly' %} selected{% endif %}>Weekly</option>
             <option value="daily"{% if settings.output_usage_report_span == 'daily' %} selected{% endif %}>Daily</option>

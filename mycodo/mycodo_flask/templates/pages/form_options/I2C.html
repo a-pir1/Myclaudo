@@ -33,7 +33,7 @@
       <div class="col-auto">
       {{form.i2c_location.label(class_='control-label')}}
       <div>
-        <select class="form-control form-tooltip form-dropdown" data-placement="top" id="i2c_location" name="i2c_location" title="{{dict_translation['i2c_location']['phrase']}}">
+        <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="i2c_location" name="i2c_location" title="{{dict_translation['i2c_location']['phrase']}}">
           <option value=""></option>
         {% for each_address in dict_options['i2c_location'] %}
           <option value="{{each_address}}"{% if each_device.i2c_location == each_address %} selected{% endif %}>{{_('Address')}} {{each_address}}</option>

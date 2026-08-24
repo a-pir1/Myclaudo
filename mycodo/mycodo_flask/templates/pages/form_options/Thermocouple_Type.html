@@ -14,7 +14,7 @@
 <div class="col-auto">
   {{form.thermocouple_type.label(class_='control-label')}}
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="thermocouple_type" name="thermocouple_type" title="{{dict_translation['thermocouple_type']['phrase']}}">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="thermocouple_type" name="thermocouple_type" title="{{dict_translation['thermocouple_type']['phrase']}}">
     {% for each_value, each_name in dict_options['thermocouple_type'] %}
       <option value="{{each_value}}"{% if each_device.thermocouple_type == each_value %} selected{% endif %}>{{each_name}}</option>
     {% endfor %}

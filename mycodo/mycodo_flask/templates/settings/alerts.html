@@ -31,7 +31,7 @@
       <div class="form-group">
         {{form_email_alert.smtp_protocol.label(class_='control-label')}}
         <div>
-          <select class="form-control form-tooltip form-dropdown" id="smtp_protocol" name="smtp_protocol" data-placement="top" title="{{_("Email protocol to send with")}}">
+          <select class="form-control form-tooltip form-dropdown" id="smtp_protocol" name="smtp_protocol" data-bs-placement="top" title="{{_("Email protocol to send with")}}">
             <option value="ssl"{%- if smtp.protocol == 'ssl' %} selected{%- endif -%}>SSL</option>
             <option value="tls"{%- if smtp.protocol == 'tls' %} selected{%- endif -%}>TLS</option>
             <option value="unencrypted"{%- if smtp.protocol == 'unencrypted' %} selected{%- endif -%}>Unencrypted</option>

@@ -15,7 +15,7 @@
 
   <div class="row small-gutters" style="padding: 0.5em">
     <div class="col-auto">
-      <button type="button" class="form-control btn btn-primary btn-block" data-dismiss="modal">{{_('Close')}}</button>
+      <button type="button" class="form-control btn btn-primary btn-block" data-bs-dismiss="modal">{{_('Close')}}</button>
     </div>
     <div class="col-auto">
       <input onclick="return $(this).processRequest(this, 'input_mod');" name="input_mod" value="{{_('Save')}}" class="form-control btn btn-primary btn-block" type="button"/>
@@ -111,12 +111,12 @@
           <button
             class="btn btn-link text-decoration-none p-0 d-flex align-items-center"
             type="button"
-            data-toggle="collapse"
-            data-target="#message_extra_{{unique_id}}"
+            data-bs-toggle="collapse"
+            data-bs-target="#message_extra_{{unique_id}}"
             aria-expanded="false"
             aria-controls="message_extra_{{unique_id}}">
 
-            <span class="mr-1 mt-n1">▸</span>
+            <span class="me-1 mt-n1">▸</span>
             <strong>Additional Information</strong>
           </button>
         </div>
@@ -125,7 +125,7 @@
           id="message_extra_{{unique_id}}"
           class="collapse"
           aria-labelledby="heading_{{unique_id}}"
-          data-parent="#accordion_{{unique_id}}">
+          data-bs-parent="#accordion_{{unique_id}}">
           <div class="card-body">
             {{dict_inputs[each_input.device]['message_extra']|safe}}
           </div>

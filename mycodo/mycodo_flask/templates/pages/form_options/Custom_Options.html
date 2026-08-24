@@ -75,7 +75,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}">
       <option value="">{{dict_translation['select_one']['title']}}</option>
       {% for each_set in each_option['options_select'] %}
       <option value="{{each_set[0]}}"
@@ -102,7 +102,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -147,7 +147,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -167,7 +167,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -183,7 +183,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -201,7 +201,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -249,7 +249,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}" size="{{multiselect_size}}" multiple=""
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}" size="{{multiselect_size}}" multiple=""
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       {% for name, choices in form_choices %}
@@ -278,7 +278,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -304,7 +304,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>
@@ -326,7 +326,7 @@
 <div class="col-auto">
   <label class="control-label" for="{{name_prefix}}{{each_option['id']}}">{{each_option['name']}}</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="{{name_prefix}}{{each_option['id']}}" name="{{name_prefix}}{{each_option['id']}}" title="{{each_option['phrase']}}"
     {%- if 'disabled' in each_option and each_option['disabled'] %} disabled{% endif -%}
     >
       <option value="">{{dict_translation['select_one']['title']}}</option>

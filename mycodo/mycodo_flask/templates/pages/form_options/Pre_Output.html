@@ -3,7 +3,7 @@
 <div class="col-auto">
   {{form.pre_output_id.label(class_='control-label')}}
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="pre_output_id" name="pre_output_id" title="{{dict_translation['pre_output_id']['phrase']}}.">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="pre_output_id" name="pre_output_id" title="{{dict_translation['pre_output_id']['phrase']}}.">
       <option value="">Disabled</option>
       {%- for each_output in choices_output_channels if 'on_off' in each_output['types'] -%}
         <option value="{{each_output['value']}}"{% if each_device.pre_output_id == each_output['value'] %} selected{% endif %}>{{each_output['item']}}</option>

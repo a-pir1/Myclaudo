@@ -50,7 +50,7 @@
 
     <div class="row small-gutters align-items-end mt-3">
       <div class="col-auto">
-        <select class="selectpicker" data-style="btn btn-primary" id="tag_unique_id" name="tag_unique_id" title="" data-original-title="Select the tag to delete">
+        <select class="selectpicker" data-style="btn btn-primary" id="tag_unique_id" name="tag_unique_id" title="" data-bs-original-title="Select the tag to delete">
           {%- for each_tag in tags -%}
             <option value="{{each_tag.unique_id}}">{{each_tag.name}}</option>
           {%- endfor -%}
