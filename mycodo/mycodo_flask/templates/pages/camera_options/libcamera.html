@@ -7,7 +7,7 @@
 <div class="col-auto">
   {{form_camera.output_format.label(class_='control-label')}}
   <div>
-    <select class="form-control form-tooltip form-dropdown" id="output_format" name="output_format" data-placement="top" title="Set the output format.">
+    <select class="form-control form-tooltip form-dropdown" id="output_format" name="output_format" data-bs-placement="top" title="Set the output format.">
       <option value="jpg"{% if each_camera.output_format == "jpg" %} selected{% endif %}>JPG</option>
       <option value="png"{% if each_camera.output_format == "png" %} selected{% endif %}>PNG</option>
       <option value="rgb"{% if each_camera.output_format == "rgb" %} selected{% endif %}>RGB</option>

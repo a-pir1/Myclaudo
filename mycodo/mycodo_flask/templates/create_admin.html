@@ -35,10 +35,8 @@
       <p>
         <form method="post" action="/create_admin">
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">{{_('Language')}}</label>
-            </div>
-            <select onchange="this.form.submit()" class="custom-select" id="inputGroupSelect01" name="language">
+            <label class="input-group-text" for="inputGroupSelect01">{{_('Language')}}</label>
+            <select onchange="this.form.submit()" class="form-select" id="inputGroupSelect01" name="language">
               {% for each_lang, each_name in languages.items() %}
                 <option value="{{each_lang}}"{% if language == each_lang %} selected{% endif %}>{{each_name}}</option>
               {% endfor %}
@@ -81,10 +79,8 @@
 
       <form method="post" action="/create_admin">
         <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">{{_('Language')}}</label>
-          </div>
-          <select onchange="this.form.submit()" class="custom-select" id="inputGroupSelect01" name="language">
+          <label class="input-group-text" for="inputGroupSelect01">{{_('Language')}}</label>
+          <select onchange="this.form.submit()" class="form-select" id="inputGroupSelect01" name="language">
             {% for each_lang, each_name in languages.items() %}
               <option value="{{each_lang}}"{% if language == each_lang %} selected{% endif %}>{{each_name}}</option>
             {% endfor %}
@@ -98,13 +94,13 @@
       <form id='create_admin_form' class="form-signin" name="create_admin" action="/create_admin" method="POST">
         <input type="hidden" name="form-name" value="create_admin">
         {{form_create_admin.hidden_tag()}}
-        {{form_create_admin.username.label(class_='sr-only')}}
+        {{form_create_admin.username.label(class_='visually-hidden')}}
         {{form_create_admin.username(class_='form-control', autofocus=true)}}
-        {{form_create_admin.email.label(class_='sr-only')}}
+        {{form_create_admin.email.label(class_='visually-hidden')}}
         {{form_create_admin.email(class_='form-control')}}
-        {{form_create_admin.password.label(class_='sr-only')}}
+        {{form_create_admin.password.label(class_='visually-hidden')}}
         {{form_create_admin.password(class_='form-control')}}
-        {{form_create_admin.password_repeat.label(class_='sr-only')}}
+        {{form_create_admin.password_repeat.label(class_='visually-hidden')}}
         {{form_create_admin.password_repeat(class_='form-control')}}
         <button class="btn btn-lg btn-primary btn-block" type="submit">{{_('Create Admin')}}</button>
       </form>

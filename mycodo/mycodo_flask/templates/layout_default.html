@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if current_user.theme in dark_themes %} data-bs-theme="dark"{% endif %}>
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,7 +52,6 @@
 
   <title>{% if settings.title_display == 'hostname' %}{{host}}{% elif settings.title_display == 'brand_text' %}{{settings.hostname_override}}{% endif %}{% block title %}{% endblock %} - Mycodo {{mycodo_version}}</title>
 
-  <script src="/static/js/popper.min.js"></script>
   <script src="/static/js/jquery-3.4.1.min.js"></script>
 
   <script src="/static/js/bootstrap.min.js"></script>
@@ -80,28 +79,55 @@
 
   <script>
 
+  // Bootstrap 5 dropped its jQuery plugin bridge, so these small helpers
+  // wrap the vanilla bootstrap.* API for the call sites that used to do
+  // $(selector).tooltip(...) / .modal(...) under Bootstrap 4.
+  function bsTooltip(selector, options) {
+    document.querySelectorAll(selector).forEach(function(el) {
+      bootstrap.Tooltip.getOrCreateInstance(el, options || {});
+    });
+  }
+
+  function bsSetTooltipText(selector, text) {
+    const el = (typeof selector === 'string') ? document.querySelector(selector) : selector;
+    if (!el) return;
+    const tip = bootstrap.Tooltip.getOrCreateInstance(el);
+    tip.hide();
+    tip.setContent({'.tooltip-inner': text});
+  }
+
+  function bsModalShow(selector) {
+    const el = document.querySelector(selector);
+    if (el) bootstrap.Modal.getOrCreateInstance(el).show();
+  }
+
+  function bsModalHide(selector) {
+    const el = document.querySelector(selector);
+    if (el) bootstrap.Modal.getOrCreateInstance(el).hide();
+  }
+
   function check_daemon_status() {
     const url = '/daemonactive';
     $.ajax(url, {
       success: function(data, responseText, jqXHR) {
         if (jqXHR.status === 204) {
           document.getElementById("daemon-status").style.color = "#F70D1A";
-          $('#daemon-status').tooltip('hide').attr('data-original-title', "{{_('Daemon is Not Running')}}");
+          bsSetTooltipText('#daemon-status', "{{_('Daemon is Not Running')}}");
         }
         else {
           if (data === 'alive') {
             document.getElementById("daemon-status").style.color = "#4E9258";
-            $('#daemon-status').tooltip('hide').attr('data-original-title', "{{_('Daemon is Running')}}");
+            bsSetTooltipText('#daemon-status', "{{_('Daemon is Running')}}");
           }
           else {
             document.getElementById("daemon-status").style.color = "#F70D1A";
-            $('#daemon-status').tooltip('hide').attr('data-original-title', "{{_('Daemon is Not Running')}}");
+            bsSetTooltipText('#daemon-status', "{{_('Daemon is Not Running')}}");
           }
         }
       },
       error: function() {
         document.getElementById("daemon-status").style.color = "#f78900";
-        $('#daemon-status').tooltip('hide').attr('data-original-title', "{{_('Cannot Check Daemon Status')}}");
+        bsSetTooltipText('#daemon-status', "{{_('Cannot Check Daemon Status')}}");
       },
       cache: false
     });
@@ -143,10 +169,9 @@
 
   {% if not hide_tooltips %}
     $(document).ready(function(){
-      $('input[title]').tooltip({placement:'top'});
-      $('textarea[title]').tooltip({placement:'top'});
-      $('.form-dropdown').dropdown();
-      $('.form-dropdown').tooltip();
+      bsTooltip('input[title]', {placement:'top'});
+      bsTooltip('textarea[title]', {placement:'top'});
+      bsTooltip('.form-dropdown');
     });
   {% endif %}
 
@@ -182,15 +207,15 @@
 
     <nav id="nav-respond" class="navbar navbar-expand-md{% if current_user.theme in dark_themes %} navbar-dark bg-dark{% else %} navbar-light bg-light{% endif %}">
 
-      <a class="navbar-brand" id="daemon-status" data-toggle="tooltip" data-placement="bottom" href="{{url_for('routes_general.index_page')}}" style="text-align: center; padding: 0 15px; font-size: 0.8em; font-weight: bold;{%- if daemon_status == "alive" -%} /*noinspection CssOverwrittenProperties*/color: #4E9258{%- else -%} /*noinspection CssOverwrittenProperties*/color: #F70D1A{%- endif -%}" title="{%- if daemon_status == "alive" -%}{{_('Daemon is Running')}}{%- else -%}{{_('Daemon is Not Running')}}{%- endif -%}">{% if settings.brand_display in ['hostname', 'brand_text'] %}{% if settings.brand_display == 'hostname' %}{{host}}{% elif settings.brand_display == 'brand_text' %}{{settings.hostname_override}}{% endif %} - {{mycodo_version}}<br><span id="time-update"></span>{% elif settings.brand_display == 'brand_image' %}<img height="{{settings.brand_image_height}}px" style="margin: 0.2em" src="/logo.jpg">{% endif %}</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" id="daemon-status" data-bs-toggle="tooltip" data-bs-placement="bottom" href="{{url_for('routes_general.index_page')}}" style="text-align: center; padding: 0 15px; font-size: 0.8em; font-weight: bold;{%- if daemon_status == "alive" -%} /*noinspection CssOverwrittenProperties*/color: #4E9258{%- else -%} /*noinspection CssOverwrittenProperties*/color: #F70D1A{%- endif -%}" title="{%- if daemon_status == "alive" -%}{{_('Daemon is Running')}}{%- else -%}{{_('Daemon is Not Running')}}{%- endif -%}">{% if settings.brand_display in ['hostname', 'brand_text'] %}{% if settings.brand_display == 'hostname' %}{{host}}{% elif settings.brand_display == 'brand_text' %}{{settings.hostname_override}}{% endif %} - {{mycodo_version}}<br><span id="time-update"></span>{% elif settings.brand_display == 'brand_image' %}<img height="{{settings.brand_image_height}}px" style="margin: 0.2em" src="/logo.jpg">{% endif %}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav me-auto">
 
           <li class="nav-item dropdown{% if active_page in ['dashboard', 'live', 'graph_async'] %} active{% endif %}">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_('Data')}}</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_('Data')}}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown00">
               <a class="dropdown-item{% if active_page == 'live' %} active{% endif %}" href="{{url_for('routes_page.page_live')}}"><i class="fas fa-play-circle"></i> {{_('Live Measurements')}}</a>
               <a class="dropdown-item{% if active_page == 'graph_async' %} active{% endif %}" href="{{url_for('routes_page.page_graph_async')}}"><i class="fas fa-sync"></i> {{_('Asynchronous Graphs')}}</a>
@@ -205,7 +230,7 @@
           </li>
 
           <li class="nav-item dropdown{% if active_page in ['input', 'output', 'function', 'method_list'] %} active{% endif %}">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_('Setup')}}</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_('Setup')}}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item{% if active_page == 'input' %} active{% endif %}" href="{{url_for('routes_input.page_input')}}"><i class="fas fa-database"></i> {{dict_translation['input']['title']}}</a>
               <a class="dropdown-item{% if active_page == 'output' %} active{% endif %}" href="{{url_for('routes_output.page_output')}}"><i class="fas fa-bolt"></i> {{dict_translation['output']['title']}}</a>
@@ -215,7 +240,7 @@
           </li>
 
           <li class="nav-item dropdown{% if active_page in ['camera', 'notes', 'export', 'usage', 'usage_reports'] %} active{% endif %}">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_('More')}}</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_('More')}}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown02">
               <a class="dropdown-item{% if active_page == 'camera' %} active{% endif %}" href="{{url_for('routes_page.page_camera')}}"><i class="fas fa-camera"></i> {{_('Camera')}}</a>
               <a class="dropdown-item{% if active_page == 'notes' %} active{% endif %}" href="{{url_for('routes_page.page_notes')}}"><i class="fas fa-edit"></i> {{dict_translation['note']['title']}}</a>
@@ -226,16 +251,16 @@
           </li>
         {% for each_dash in dashboards if each_dash.unique_id == dashboard_id %}
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_config_{{each_dash.unique_id}}"><i class="fas fa-cog"></i> {{each_dash.name}}</a>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal_config_{{each_dash.unique_id}}"><i class="fas fa-cog"></i> {{each_dash.name}}</a>
           </li>
         {% endfor %}
 
         </ul>
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle" style="font-size: 1.5em;"></i></a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle" style="font-size: 1.5em;"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown02">
             {% if help_page[0] != '' %}
               <a class="dropdown-item{% if active_page == 'help' %} active{% endif %}" target="_blank" href="{{help_page[0]}}"><i class="fas fa-book"></i> {{_('Help')}}: {{help_page[1]}}</a>
@@ -254,7 +279,7 @@
           </li>
 
           <li class="nav-item dropdown{% if upgrade_available %} dropdown-upgrade{% elif active_page in ['backup', 'dependencies', 'info', 'logview', 'settings', 'upgrade'] %} active{% endif %}">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cog" style="font-size: 1.5em;"></i></a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cog" style="font-size: 1.5em;"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown02">
               <a class="dropdown-item{% if active_page == 'settings' %} active{% endif %}" href="{{url_for('routes_settings.settings_general')}}"><i class="fas fa-wrench"></i> {{_('Configure')}}</a>
               <a class="dropdown-item{% if active_page == 'logview' %} active{% endif %}" href="{{url_for('routes_page.page_logview')}}"><i class="fas fa-book"></i> {{_('Mycodo Logs')}}</a>
@@ -271,7 +296,7 @@
               <a class="dropdown-item" href="/systemctl/restart" onclick='return confirm("Confirm restarting the system")'><i class="fas fa-redo-alt"></i> {{_('Restart System')}}</a>
               <a class="dropdown-item" href="/systemctl/shutdown" onclick='return confirm("Confirm shutting down the system")'><i class="fas fa-power-off"></i> {{_('Shutdown System')}}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal_config_theme"><i class="fas fa-user-cog"></i> {{_('Preferences')}}</a>
+              <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal_config_theme"><i class="fas fa-user-cog"></i> {{_('Preferences')}}</a>
               <a class="dropdown-item" href="/logout"><i class="fas fa-lock"></i> {{_('Logout')}} ({{current_user.name}})</a>
             </div>
           </li>
@@ -293,7 +318,7 @@
               <div class="col-auto">
                 <label class='form-check-label'>{{_('Language')}}</label>
                 <div>
-                  <select class="form-control form-tooltip form-dropdown" data-placement="top" id="language" name="language" title="{{_("Selecting a language will override the web browser's language")}}">
+                  <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="language" name="language" title="{{_("Selecting a language will override the web browser's language")}}">
                     <option value="">Browser Default</option>
                     {% for each_language in languages %}
                     <option value="{{each_language[0]}}"{% if current_user.language == each_language[0] %} selected{% endif %}>{{each_language[1]}}</option>
@@ -317,7 +342,7 @@
 
             <div class="row small-gutters" style="padding: 1em 1em 0 0.8em;">
               <div class="col-auto">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">{{_('Close')}}</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{_('Close')}}</button>
               </div>
               <div class="col-auto">
                 <input class="btn btn-primary" id="user_preferences_save" name="user_preferences_save" type="submit" value="{{_('Save')}}">
@@ -355,7 +380,7 @@
 
             <div class="row small-gutters" style="padding: 1em 1em 0 0.8em;">
               <div class="col-auto">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">{{_('Close')}}</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{_('Close')}}</button>
               </div>
               <div class="col-auto">
                 {{form_dashboard.dash_modify(class_='btn btn-primary')}}
@@ -387,7 +412,7 @@
     {%- block body %}{% endblock -%}
     <script>
     $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
+      bsTooltip('[data-bs-toggle="tooltip"]');
     });
 
     window.onload = function() {

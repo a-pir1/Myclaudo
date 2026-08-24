@@ -14,7 +14,7 @@
 <div class="col-auto">
   {{form.resolution.label(class_='control-label')}}
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="resolution" name="resolution" title="{{dict_translation['resolution']['phrase']}}">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="resolution" name="resolution" title="{{dict_translation['resolution']['phrase']}}">
     {% for each_value, each_name in dict_options['resolution'] %}
       <option value="{{each_value}}"{% if each_device.resolution == each_value %} selected{% endif %}>{{each_name}}</option>
     {% endfor %}

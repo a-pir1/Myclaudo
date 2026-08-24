@@ -14,11 +14,11 @@
       <i style="font-size: 2em" class="fa fa-grip-horizontal" title="{{_('Drag')}}"></i>
     </div>
     <div class="col-1 text-center icon-fh my-auto">
-      <a class="btn" style="border-color: transparent; padding: 0" data-toggle="modal" data-target="#modal_config_{{each_function.unique_id}}">
+      <a class="btn" style="border-color: transparent; padding: 0" data-bs-toggle="modal" data-bs-target="#modal_config_{{each_function.unique_id}}">
         <i style="font-size: 1.5em" class="fas fa-cog" title="{{_('Configure')}}"></i>
       </a>
     </div>
-    <div class="col-10 text-center font-weight-bold h5" id="function_name_{{each_function.unique_id}}" style="color: {{custom_options_values_controllers[each_function.unique_id]['color']}}">{{each_function.name}}</div>
+    <div class="col-10 text-center fw-bold h5" id="function_name_{{each_function.unique_id}}" style="color: {{custom_options_values_controllers[each_function.unique_id]['color']}}">{{each_function.name}}</div>
   </div> <!-- grid-stack-item-content -->
 </form>
 

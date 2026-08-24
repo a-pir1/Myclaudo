@@ -38,7 +38,7 @@
 <div class="col-10 col-sm-3 col-md-2">
   {{form_trigger.rise_or_set.label(class_='control-label')}}
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="rise_or_set" name="rise_or_set" title="{{_('Trigger conditional at sunrise or sunset?')}}">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="rise_or_set" name="rise_or_set" title="{{_('Trigger conditional at sunrise or sunset?')}}">
       <option value="sunrise"{% if each_function.rise_or_set == 'sunrise' %} selected{% endif %}>{{_('Sunrise')}}</option>
       <option value="sunset"{% if each_function.rise_or_set == 'sunset' %} selected{% endif %}>{{_('Sunset')}}</option>
     </select>

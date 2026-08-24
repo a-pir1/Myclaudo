@@ -1,7 +1,7 @@
 <div class="col-auto">
   <label class='control-label'>Output</label>
   <div>
-    <select class="form-control form-tooltip form-dropdown" id="unique_id_1" name="unique_id_1" data-placement="top" title="{{_('Trigger this conditional to act when this output turns on or off')}}">
+    <select class="form-control form-tooltip form-dropdown" id="unique_id_1" name="unique_id_1" data-bs-placement="top" title="{{_('Trigger this conditional to act when this output turns on or off')}}">
       <option value="">{{dict_translation['select_one']['title']}}</option>
       {%- for each_output in choices_output_channels if 'on_off' in each_output['types'] -%}
         <option value="{{each_output['value']}}"{% if each_function.unique_id_1 == each_output['value'].split(",")[0] and each_function.unique_id_2 == each_output['value'].split(",")[1] %} selected{% endif %}>{{each_output['item']}}</option>
@@ -11,7 +11,7 @@
 </div>
 <div class="col-auto">
   {{form_trigger.output_state.label(class_='control-label')}}
-  <select class="form-control form-tooltip form-dropdown" id="output_state" name="output_state" data-placement="top" title="{{_('What action will trigger this conditional, on or off?')}}">
+  <select class="form-control form-tooltip form-dropdown" id="output_state" name="output_state" data-bs-placement="top" title="{{_('What action will trigger this conditional, on or off?')}}">
     <option value="">{{dict_translation['select_one']['title']}}</option>
     <option value="on_duration_none"{% if each_function.output_state == 'on_duration_none' %} selected{% endif %}>{{dict_translation['on']['title']}} ({{_('no duration')}})</option>
     <option value="on_duration_any"{% if each_function.output_state == 'on_duration_any' %} selected{% endif %}>{{dict_translation['on']['title']}} ({{_('any duration')}})</option>

@@ -250,7 +250,7 @@
                 if (data.data.dep_message.length > 0) {
                   document.getElementById("dependencies_message").innerHTML = "<p>Message about dependencies: " + data.data.dep_message + "</p>";
                 }
-                $('#modal_config_dependency_install').modal('show');
+                bsModalShow('#modal_config_dependency_install');
                 popup_response(data);
               } else {
                 $.ajax({
@@ -262,7 +262,7 @@
                         w: 24,
                         h: data.data.size_y
                       });
-                      {% if not hide_tooltips %}$('input[title]').tooltip({placement: 'top'});{% endif %}
+                      {% if not hide_tooltips %}bsTooltip('input[title]', {placement: 'top'});{% endif %}
                     }
                     popup_response(data);
                   },
@@ -290,7 +290,7 @@
                 }
               }
               else if (action === 'output_delete' && 'output_id' in data.data) {
-                $('#modal_config_' + data.data.output_id).modal('hide');
+                bsModalHide('#modal_config_' + data.data.output_id);
                 $('.modal-backdrop').remove();
                 $(document.body).removeClass("modal-open");
                 grid.removeWidget('#gridstack_output_' + data.data.output_id);

@@ -3,7 +3,7 @@
 <div class="col-auto">
   {{form.switch_edge.label(class_='control-label')}}
   <div>
-    <select class="form-control form-tooltip form-dropdown" data-placement="top" id="switch_edge" name="switch_edge" title="{{dict_translation['switch_edge']['phrase']}}">
+    <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="switch_edge" name="switch_edge" title="{{dict_translation['switch_edge']['phrase']}}">
       <option value="rising"{% if each_device.switch_edge == "rising" %} selected{% endif %}>Rising</option>
       <option value="falling"{% if each_device.switch_edge == "falling" %} selected{% endif %}>Falling</option>
       <option value="both"{% if each_device.switch_edge == "both" %} selected{% endif %}>Both</option>

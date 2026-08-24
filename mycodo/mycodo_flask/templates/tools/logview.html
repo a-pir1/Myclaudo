@@ -14,7 +14,7 @@
         {{form_log_view.lines(class_='form-control', type="number", value=lines)}}
       </div>
       <div class="col-auto">
-        <select class="form-control form-tooltip form-dropdown" data-placement="top" id="log" name="log" title="Log to view">
+        <select class="form-control form-tooltip form-dropdown" data-bs-placement="top" id="log" name="log" title="Log to view">
           <option value="log_daemon"{% if log_field == "log_daemon" %} selected{% endif %}>Daemon</option>
           <option value="log_pid_settings"{% if log_field == "log_pid_settings" %} selected{% endif %}>Daemon (PID Settings)</option>
           <option value="log_keepup"{% if log_field == "log_keepup" %} selected{% endif %}>Daemon Keepup</option>

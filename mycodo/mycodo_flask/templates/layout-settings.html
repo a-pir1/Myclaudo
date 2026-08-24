@@ -4,17 +4,16 @@
 {% block head %}
   <script>
     $(document).ready(function() {
-      $('[data-toggle=offcanvas]').click(function() {
+      $('[data-bs-toggle=offcanvas]').click(function() {
         $('.row-offcanvas').toggleClass('active');
       });
     });
 
   {% if not hide_tooltips %}
     $(document).ready(function(){
-      $('input[title]').tooltip({placement:'top'});
-      $('textarea[title]').tooltip({placement:'top'});
-      $('.form-dropdown').dropdown();
-      $('.form-dropdown').tooltip();
+      bsTooltip('input[title]', {placement:'top'});
+      bsTooltip('textarea[title]', {placement:'top'});
+      bsTooltip('.form-dropdown');
     });
   {% endif %}
   </script>
